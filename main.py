@@ -13,18 +13,22 @@ class MyApp(QMainWindow):
         super().__init__()
         uic.loadUi('UI.ui', self)
         self.pushButton.clicked.connect(self.do)
+        self.exec = False
 
     def do(self):
+        self.exec = True
         self.update()
 
     def paintEvent(self, event):
-        qp = QPainter()
-        qp.begin(self)
-        self.draw(qp)
-        qp.end()
+        if self.exec:
+            qp = QPainter()
+            qp.begin(self)
+            self.draw(qp)
+            qp.end()
+            self.exec = False
 
     def draw(self, qp):
-        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
+        qp.setBrush(QColor('yellow'))
         radius = randint(0, 200)
         qp.drawEllipse(QPoint(300, 250), radius, radius)
 
