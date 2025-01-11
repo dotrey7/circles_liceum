@@ -28,7 +28,7 @@ class MyApp(QMainWindow):
             self.exec = False
 
     def draw(self, qp):
-        qp.setBrush(QColor('yellow'))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
         radius = randint(0, 200)
         qp.drawEllipse(QPoint(300, 250), radius, radius)
 
